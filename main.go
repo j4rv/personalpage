@@ -4,7 +4,6 @@ import (
 	"github.com/gin-contrib/multitemplate"
 	"github.com/gin-gonic/gin"
 	"log"
-	"net/http"
 	"path"
 	"path/filepath"
 )
@@ -14,13 +13,11 @@ func main() {
 
 	r.HTMLRender = loadTemplates("./resources/templates")
 
-	r.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", nil)
-	})
+	r.Static("/resources/static", "./resources/static")
 
-	r.NoRoute(func(c *gin.Context) {
-		c.HTML(http.StatusNotFound, "404.tmpl", nil)
-	})
+	r.GET("/", indexHandler)
+
+	r.NoRoute(notFoundHandler)
 
 	err := r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 
@@ -45,7 +42,7 @@ func loadTemplates(templatesDir string) multitemplate.Renderer {
 		}
 
 		// Get the layouts for the current directory
-		// Layouts must begin with the name of the directory and end in .tmpl
+		// Layouts must begin with the Name of the directory and end in .tmpl
 		layouts, err := filepath.Glob(path.Join(templatesDir, "layouts", subDirBase+"*.tmpl"))
 		if err != nil {
 			log.Fatal(err)

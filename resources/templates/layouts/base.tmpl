@@ -5,17 +5,14 @@
     <title>{{block "title" .}} {{end}}</title>
     <meta name="author" content="José.A Rojo - J4RV">
     <meta name="description" content="J4RV's Personal Webpage">
+    <link rel="icon" type="image/png" href="/resources/static/favicon.png">
     {{ template "base_style.tmpl" . }}
 
 <body>
-    <footer>{{block "header" .}} {{end}}</footer>
+    <header>{{block "header" .}} {{end}}</header>
 
     <div id="content">
         {{template "content" .}}
     </div>
 
     <footer>{{block "footer" .}} {{end}}</footer>
-
-    <script>
-        console.log("JS loaded.");
-    </script>

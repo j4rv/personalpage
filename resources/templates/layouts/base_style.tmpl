@@ -1,8 +1,9 @@
 <style>
+
     body {
         font-family: Calibri, sans-serif;
         font-size: 1.2em;
-        background-color: #191b22;
+        background-color: #17202b;
         color: #EEE;
     }
 
@@ -10,7 +11,65 @@
         margin-left: 20px;
     }
 
-    a {
-        color: #ee443b;
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    .avatar {
+        height: 64px;
+        border-radius: 32px;
+        box-shadow: 0 6px 10px black;
+    }
+
+    header h1 {
+        text-shadow: 0 4px 4px black;
+    }
+
+    footer {
+        text-align: right;
+        font-size: .8em;
+    }
+
+    footer p {
+        margin: 0;
+    }
+
+    #content {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 800px;
+        border-radius: 6px;
+    }
+
+    #projects {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .project {
+        position: relative;
+        margin: 1rem;
+        width: 182px;
+        height: 182px;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px #0008;
+    }
+
+    .project_name {
+        margin: 0;
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        color: white;
+        font-size: 0.7em;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
 </style>

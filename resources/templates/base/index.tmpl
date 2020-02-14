@@ -1,12 +1,29 @@
 {{define "title"}}Home{{end}}
+
+{{define "header"}}
+<a href="/"><img src="/resources/static/j4rv_avatar.png" class="avatar"></a>
+<h1>J4RV's homepage</h1>
+{{end}}
+
 {{define "content"}}
-<h1>Welcome!</h1>
-<div>
-    <h3>Projects:</h3>
-    <ul>
-        <li><a href="https://j4rvcah.herokuapp.com">Cards against Humanity!</a></li>
-        <li><a href="https://j4rv.github.io/risk-dice-roller/">Risk Dice Roller</a></li>
-        <li><a href="https://j4rv.github.io/nonograms/">Nonograms~</a></li>
-    </ul>
+<h4><i>"This is my motherfucking website"</i> - José Rojo</h4>
+
+<h3>Projects:</h3>
+<div id="projects">
+    {{range $_, $project := .Projects}}
+    <a href="{{.URL}}">
+        <div class="project"
+             style="background-image: linear-gradient(#0000, #000F), url('/resources/static/{{.Image}}')">
+            <p class="project_name">{{.Name}}</p>
+        </div>
+    </a>
+    {{end}}
 </div>
+{{end}}
+
+{{define "footer"}}
+<p>This website does not use cookies.</p>
+<p>This website does not need to know your location.</p>
+<p>This website does not have ADS.</p>
+<p>This website was made using Go.</p>
 {{end}}
