@@ -61,6 +61,22 @@
         box-shadow: 0 4px 6px #0008;
     }
 
+    .project::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        box-shadow: 0 0 10px #b3e5ff, 0 0 20px #1f81ff, inset 0 0 6px #81d2ff;
+        opacity: 0;
+        transition: opacity 0.2s ease-in;
+    }
+
+    .project:hover::after {
+        opacity: 1;
+    }
+
     .project_name {
         margin: 0;
         position: absolute;
