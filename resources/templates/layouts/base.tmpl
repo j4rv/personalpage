@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{block "title" .}} {{end}}</title>
+    <meta name="author" content="José.A Rojo - J4RV">
+    <meta name="description" content="J4RV's Personal Webpage">
+    {{ template "base_style.tmpl" . }}
+
+<body>
+    <footer>{{block "header" .}} {{end}}</footer>
+
+    <div id="content">
+        {{template "content" .}}
+    </div>
+
+    <footer>{{block "footer" .}} {{end}}</footer>
+
+    <script>
+        console.log("JS loaded.");
+    </script>
