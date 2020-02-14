@@ -10,6 +10,7 @@ import (
 
 func main() {
 	r := gin.Default()
+	gin.SetMode(gin.ReleaseMode)
 
 	r.HTMLRender = loadTemplates("./resources/templates")
 
