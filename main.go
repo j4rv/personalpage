@@ -32,39 +32,36 @@ func main() {
 func loadTemplates(templatesDir string) multitemplate.Renderer {
 	r := multitemplate.NewRenderer()
 
-	templatesSubDirs, err := filepath.Glob(templatesDir + "/*")
+	subDirs, err := filepath.Glob(templatesDir + "/*")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	log.Print("templateSubDir", templatesSubDirs)
-	for _, templateSubDir := range templatesSubDirs {
-		subdirBase := filepath.Base(templateSubDir)
+	for _, subDir := range subDirs {
+		subDirBase := filepath.Base(subDir)
 
-		if subdirBase == "layouts" {
+		if subDirBase == "layouts" {
 			continue
 		}
 
-		layouts, err := filepath.Glob(path.Join(templatesDir, "layouts", subdirBase+"*.tmpl"))
-		log.Print("Layout glob", path.Join(templatesDir, "layouts", subdirBase+"*.tmpl"))
+		// Get the layouts for the current directory
+		// Layouts must begin with the name of the directory and end in .tmpl
+		layouts, err := filepath.Glob(path.Join(templatesDir, "layouts", subDirBase+"*.tmpl"))
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		pages, err := filepath.Glob(path.Join(templateSubDir, "*.tmpl"))
+		// Get all .tmpl pages from the current directory
+		pages, err := filepath.Glob(path.Join(subDir, "*.tmpl"))
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		log.Print("layouts", layouts)
-		log.Print("pages", templateSubDir, pages)
-
-		// Generate our templates map from each subdirectory
+		// Generate our templates map for the current directory
 		for _, page := range pages {
 			layoutCopy := make([]string, len(layouts))
 			copy(layoutCopy, layouts)
 			files := append(layoutCopy, page)
-			log.Print("Adding:", filepath.Base(page), files)
 			r.AddFromFiles(filepath.Base(page), files...)
 		}
 	}
