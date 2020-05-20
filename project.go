@@ -13,6 +13,11 @@ var projects = []project{
 		Image: "cah_background.png",
 	},
 	{
+		Name:  "PC Remote Controller",
+		URL:   "https://github.com/j4rv/remotecontrol",
+		Image: "remotecontrol_background.png",
+	},
+	{
 		Name:  "Risk Dice Roller",
 		URL:   "https://j4rv.github.io/risk-dice-roller",
 		Image: "riskdiceroller_background.png",
